@@ -1,17 +1,138 @@
 ---
-import "../styles/global.css";
+import MainLayout from '../layouts/MainLayout.astro';
 ---
 
-<html lang="ja-JP">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>🏗️ ShizuokaTECH</title>
-  </head>
-  <body class="min-h-screen bg-slate-950 text-slate-100 flex items-center justify-center">
-    <h1 class="text-4xl font-semibold">🏗️ Working Progress...</h1>
-  </body>
-</html>
+<MainLayout>
+  <!-- Fixed blurring background -->
+  <div
+    id="hero-bg"
+    class="fixed inset-0 -z-20 scale-110 bg-cover bg-center bg-no-repeat"
+    style="background-image: url('/bg.jpg')"
+  ></div>
+  <!-- Dark overlay -->
+  <div id="hero-overlay" class="fixed inset-0 -z-10" style="background-color: rgba(0,0,0,0.35)"></div>
+
+  <!-- Hero Section -->
+  <section class="relative h-screen flex flex-col items-center justify-center text-white text-center px-4">
+    <p class="text-xs sm:text-sm font-semibold tracking-[0.4em] uppercase text-white/60 mb-5">
+      Shizuoka Programmer Community
+    </p>
+    <h1 class="text-5xl sm:text-7xl md:text-8xl font-black tracking-wider drop-shadow-xl mb-6">
+      ShizuokaTECH
+    </h1>
+    <p class="text-base sm:text-xl text-white/75 max-w-lg leading-relaxed">
+      静岡のエンジニア・クリエイターが集まる<br />コミュニティイベント
+    </p>
+
+    <!-- Scroll indicator -->
+    <div id="scroll-indicator" class="absolute bottom-10 flex flex-col items-center gap-2 text-white/50 text-xs tracking-widest uppercase">
+      <span>Scroll</span>
+      <svg class="w-4 h-4 animate-bounce" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Content Sections -->
+  <div class="relative z-10">
+
+    <!-- About Section -->
+    <section class="bg-white py-24 px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl sm:text-4xl font-bold text-gray-900">ShizuokaTECH とは</h2>
+          <p class="mt-4 text-gray-500 max-w-xl mx-auto text-sm sm:text-base leading-relaxed">
+            「ShizuokaTECH」は、静岡のITコミュニティ活性化を目指した交流イベントです。学生、社会人を問わず、また取り扱う分野も限定しません。参加者が自由に知見を交換し合い、静岡のITコミュニティを共に盛り上げていきましょう。
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="bg-gray-50 py-24 px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-16">
+          <p class="text-indigo-600 font-semibold tracking-[0.3em] text-xs uppercase mb-3">News</p>
+          <h2 class="text-3xl sm:text-4xl font-bold text-gray-900">お知らせ</h2>
+        </div>
+
+        <div class="space-y-4">
+          <article class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex gap-4 items-start hover:shadow-md transition-shadow">
+            <span class="text-xs font-semibold text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full whitespace-nowrap mt-0.5">サイト</span>
+            <div>
+              <time class="text-xs text-gray-400 mb-1 block">2026.05.23</time>
+              <p class="text-gray-800 font-medium text-sm sm:text-base">ShizuokaTECH の公式サイトをオープンしました</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-14 px-4 text-center">
+      <p class="text-2xl font-bold tracking-wider mb-2">ShizuokaTECH</p>
+      <p class="text-gray-400 text-sm">静岡のプログラマーが集まるコミュニティイベント</p>
+
+      <div class="flex justify-center items-center gap-4 mt-8">
+        <a
+          href="https://x.com/ShizuokaTECH"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="X (Twitter)"
+          class="w-11 h-11 rounded-full bg-white/5 hover:bg-white/15 border border-white/10 flex items-center justify-center text-white/80 hover:text-white transition-colors"
+        >
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.451-6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77Z"/>
+          </svg>
+        </a>
+        <a
+          href="https://shizuoka-tech.connpass.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="connpass"
+          class="h-11 px-5 rounded-full bg-white/5 hover:bg-white/15 border border-white/10 inline-flex items-center gap-2 text-sm font-semibold text-white/80 hover:text-white transition-colors"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+          </svg>
+          connpass
+        </a>
+      </div>
+
+      <p class="text-gray-600 text-xs mt-10">&copy; 2026 ShizuokaTECH</p>
+    </footer>
+
+  </div>
+</MainLayout>
+
+<script>
+  const heroBg = document.getElementById('hero-bg') as HTMLElement;
+  const heroOverlay = document.getElementById('hero-overlay') as HTMLElement;
+  const scrollIndicator = document.getElementById('scroll-indicator') as HTMLElement;
+
+  let ticking = false;
+
+  function updateEffects() {
+    const scrollY = window.scrollY;
+    const vh = window.innerHeight;
+    // Blur completes by 80% of viewport height scrolled
+    const progress = Math.min(scrollY / (vh * 0.8), 1);
+
+    heroBg.style.filter = `blur(${progress * 18}px)`;
+
+    const overlayOpacity = 0.35 + progress * 0.35;
+    heroOverlay.style.backgroundColor = `rgba(0,0,0,${overlayOpacity})`;
+
+    scrollIndicator.style.opacity = String(1 - progress * 3);
+
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(updateEffects);
+      ticking = true;
+    }
+  }, { passive: true });
+</script>
