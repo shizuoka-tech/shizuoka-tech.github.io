@@ -1,9 +1,14 @@
 ---
 import { getCollection } from "astro:content";
 import MainLayout from "../layouts/MainLayout.astro";
+import EventCard from "../components/EventCard.astro";
 
 const news = (await getCollection("news")).sort(
   (a, b) => b.data.date.getTime() - a.data.date.getTime(),
+);
+
+const events = (await getCollection("events")).sort(
+  (a, b) => a.data.datetime.getTime() - b.data.datetime.getTime(),
 );
 
 const formatDate = (date: Date) =>
@@ -31,6 +36,18 @@ const formatDate = (date: Date) =>
     <p class="text-base sm:text-xl text-white/75 max-w-lg leading-relaxed">
       静岡のエンジニア・クリエイターが集まる<br />コミュニティイベント
     </p>
+
+    {events.length > 0 && (
+      <div class="w-full max-w-xl mt-8 flex flex-col gap-3">
+        {events.map((entry) => (
+          <EventCard
+            name={entry.data.name}
+            datetime={entry.data.datetime}
+            url={entry.data.url}
+          />
+        ))}
+      </div>
+    )}
 
     <div class="flex flex-wrap items-center justify-center gap-3 mt-8">
       <a
