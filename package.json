@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "@astrojs/tailwind": "^6.0.2",
+    "@tailwindcss/typography": "^0.5.20",
     "@typescript-eslint/parser": "^8.59.0",
     "autoprefixer": "^10.5.0",
     "eslint": "^10.2.1",
