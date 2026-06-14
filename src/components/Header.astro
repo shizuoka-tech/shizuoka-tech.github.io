@@ -1,0 +1,30 @@
+---
+type Props = {
+  variant?: "transparent" | "solid";
+};
+
+const { variant = "solid" } = Astro.props;
+
+const base =
+  "fixed top-0 inset-x-0 z-50 transition-colors";
+const styles =
+  variant === "transparent"
+    ? "bg-transparent text-white"
+    : "bg-white/90 backdrop-blur text-gray-900 border-b border-gray-100";
+---
+
+<header class={`${base} ${styles}`}>
+  <div class="max-w-5xl mx-auto px-4 h-14 flex items-center justify-between">
+    <a href="/" class="font-bold tracking-wider text-lg">ShizuokaTECH</a>
+    <nav class="text-sm">
+      <a
+        href="https://shizuoka-tech.connpass.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="opacity-80 hover:opacity-100 transition-opacity"
+      >
+        イベント情報
+      </a>
+    </nav>
+  </div>
+</header>
