@@ -1,0 +1,6 @@
+{
+  "chat.tools.terminal.autoApprove": {
+    "pnpm": true,
+    "npx -y modern-web-guidance@latest": true
+  }
+}

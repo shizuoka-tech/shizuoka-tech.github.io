@@ -1,0 +1,51 @@
+---
+type Props = {
+  name: string;
+  datetime: Date;
+  url: string;
+};
+
+const { name, datetime, url } = Astro.props;
+
+const weekdays = ["日", "月", "火", "水", "木", "金", "土"];
+const y = datetime.getFullYear();
+const m = String(datetime.getMonth() + 1).padStart(2, "0");
+const d = String(datetime.getDate()).padStart(2, "0");
+const w = weekdays[datetime.getDay()];
+const hh = String(datetime.getHours()).padStart(2, "0");
+const mm = String(datetime.getMinutes()).padStart(2, "0");
+
+const dateLabel = `${y}.${m}.${d} (${w})`;
+const timeLabel = `${hh}:${mm}`;
+---
+
+<a
+  href={url}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="group flex items-center gap-4 sm:gap-5 rounded-2xl bg-black/40 hover:bg-black/50 backdrop-blur-md border border-white/25 hover:border-white/50 px-4 sm:px-5 py-3 sm:py-4 text-left transition-colors min-w-0"
+>
+  <div class="flex flex-col items-center justify-center px-2 sm:px-3 py-1 rounded-xl bg-white/15 border border-white/25 shrink-0">
+    <span class="text-[10px] tracking-widest text-white/70 uppercase">{w}</span>
+    <span class="text-xl sm:text-2xl font-black leading-none mt-0.5 text-white">{d}</span>
+    <span class="text-[10px] text-white/70 mt-1">{y}.{m}</span>
+  </div>
+
+  <div class="flex-1 min-w-0">
+    <p class="text-sm sm:text-base font-bold text-white truncate">{name}</p>
+    <p class="text-xs sm:text-sm text-white/70 mt-0.5">
+      {dateLabel} <span class="opacity-60">/</span> {timeLabel}〜
+    </p>
+  </div>
+
+  <svg
+    class="w-4 h-4 text-white/60 group-hover:text-white shrink-0 transition-colors"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+  >
+    <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+  </svg>
+</a>
